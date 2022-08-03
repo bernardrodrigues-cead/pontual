@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img class="ms-5 me-2 h-100" src="{% static 'images/cead.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                CEAD Pontual
+            </a>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer class="text-center">
+        <small>Versão 0.0.1</small>
+    </footer>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5 w-50">
+        <div class="text-center">
+            <a class="btn btn-primary" href="{% url 'cadastrar' %}">Cadastrar Funcionário</a>
+            <a class="btn btn-primary" href="{% url 'newPonto' %}">Atualizar Ponto</a>
+            <span class="ms-3"><strong>Última atualização:</strong> {{ultimo_ponto.data}}</span>
+        </div>
+
+        <div class="border p-3 my-3">
+            <form method="post" action="">{% csrf_token %}
+                <table class="table table-striped">
+                    {{form.as_table}}
+                </table>
+                <div class="text-center">
+                    <button class="btn btn-primary px-5" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+
+        <table class="table table-striped table-hover border">
+            <thead>
+                <tr>
+                    <th>Funcionário</th>
+                    <th>Matrícula</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funcionario in funcionarios %}
+                <tr>
+                    <td>{{funcionario.nome}}</td>
+                    <td>{{funcionario.matricula}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

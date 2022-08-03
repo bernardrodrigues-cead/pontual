@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container mt-4 border p-3 w-50">
+        <h1 class="h1 mb-4">Cadastro de Funcionário</h1>
+        <form method="post" action="">{% csrf_token %}
+            <table class="table table-striped">    
+                {{form.as_table}}
+            </table>
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <a class="btn btn-secondary" href="{% url 'index' %}">Voltar</a>
+        </form>
+    </div>
+
+{% endblock %}
