@@ -11,21 +11,25 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os, json
+from re import S
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+with open(os.path.join('scripts', 'config.json')) as f:
+    CONFIG = json.load(f)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w-23b_sc1j^yt!=^q=l5q)#r0l=lc#c(7s=7h3a*w4k^w*r*y!'
+SECRET_KEY = CONFIG['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.localhost', '.cead.lan']
 
 
 # Application definition
@@ -76,8 +80,8 @@ WSGI_APPLICATION = 'payday.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': CONFIG['ENGINE'],
+        'NAME': BASE_DIR / CONFIG['NAME'],
     }
 }
 
@@ -104,22 +108,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = CONFIG['LANGUAGE']
 
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = CONFIG['TIME_ZONE']
 
-USE_I18N = True
+USE_I18N = CONFIG['USE_I18N']
 
-USE_TZ = True
+USE_TZ = CONFIG['USE_TZ']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = CONFIG['URL']
 
-MEDIA_URL = '/media/'
+MEDIA_URL = CONFIG['MEDIA']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = CONFIG['SITE_ID']
