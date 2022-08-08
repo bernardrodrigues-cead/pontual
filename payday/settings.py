@@ -27,9 +27,9 @@ with open(os.path.join('scripts', 'config.json')) as f:
 SECRET_KEY = CONFIG['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = CONFIG['DEBUG']
 
-ALLOWED_HOSTS = ['.localhost', '.cead.lan']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
