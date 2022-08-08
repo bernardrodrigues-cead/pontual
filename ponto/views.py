@@ -87,6 +87,7 @@ def resultados(request):
         }
         return render(request, 'ponto/resultados.html', context)
 
+@login_required(login_url='/accounts/login/')
 def cadastrarFuncionario(request):
     if request.method == 'POST':
         form = FuncionarioForm(request.POST)
@@ -101,6 +102,7 @@ def cadastrarFuncionario(request):
     }
     return render(request, 'ponto/funcionario_form.html', context)
 
+@login_required(login_url='/accounts/login/')
 def newPonto(request):
     if request.method == 'POST':
         form = NewPontoForm(request.POST, request.FILES)
