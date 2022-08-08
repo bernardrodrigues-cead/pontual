@@ -27,9 +27,9 @@ with open(os.path.join('scripts', 'config.json')) as f:
 SECRET_KEY = CONFIG['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = CONFIG['DEBUG']
 
-ALLOWED_HOSTS = ['.localhost', '.cead.lan']
+ALLOWED_HOSTS = ['0.0.0.0', '.localhost', '.cead.lan']
 
 
 # Application definition
@@ -85,6 +85,9 @@ DATABASES = {
     }
 }
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 60*5 # 5 minutes
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

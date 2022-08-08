@@ -1,6 +1,7 @@
 import os
 from django import forms
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from ponto.forms import FuncionarioForm, NewPontoForm, PontoSubmit
 from ponto.models import Funcionario, Ponto
@@ -8,6 +9,7 @@ from django.utils import timezone
 from django.contrib import messages
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def index(request):
     if request.method == 'POST':
         form = PontoSubmit(request.POST, request.FILES)
@@ -76,6 +78,7 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+@login_required(login_url='/accounts/login/')
 def resultados(request):
     if request.session.get('resultado'):
         context = {
