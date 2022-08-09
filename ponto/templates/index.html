@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container mt-5 w-50">
-        <div class="text-center">
+    <div class="container mt-5 w-50 main-container">
+        <div class="d-flex justify-content-around">
             <a class="btn btn-primary" href="{% url 'cadastrar' %}">Cadastrar Funcionário</a>
             <a class="btn btn-primary" href="{% url 'newPonto' %}">Atualizar Ponto</a>
+        </div>
+        <div class="mt-3 text-center">
             <span class="ms-3"><strong>Última atualização:</strong> {{ultimo_ponto.data}}</span>
         </div>
-
         <div class="border p-3 my-3">
             <form method="post" action="">{% csrf_token %}
                 <table class="table table-striped">

@@ -5,3 +5,16 @@
 .mt-10{
     margin-top: 10rem;
 }
+
+@media(max-width:768px){
+    :root{
+        font-size: 13px;;
+    }
+    .main-container{
+        width: 100% !important;
+
+    }
+    .results{
+        width: 100% !important;
+    }
+}
