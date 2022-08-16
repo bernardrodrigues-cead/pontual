@@ -43,7 +43,7 @@ def index(request):
             resultado = []
             resultado_parcial = [pontos[0]['data']]
             data_atual = pontos[0]['data']
-            
+
             for ponto in pontos:
                 if ponto['data'][3:5] == mes and ponto['data'][6:10] == ano:
                     if ponto['data'][:2] != data_atual[:2]:
@@ -51,12 +51,17 @@ def index(request):
                         
                         if len(resultado_parcial) == 5:
                             total = timezone.datetime.strptime(resultado_parcial[4],'%H:%M') - timezone.datetime.strptime(resultado_parcial[1], '%H:%M') - (timezone.datetime.strptime(resultado_parcial[3], '%H:%M') - timezone.datetime.strptime(resultado_parcial[2], '%H:%M'))
-                            resultado_parcial.append(str(total))                        
+                            resultado_parcial.append(str(total))
                         resultado.append(resultado_parcial)
                         resultado_parcial = [ponto['data']]
                     resultado_parcial.append(ponto['hora'])
-            resultado = resultado[1:]
             
+            if len(resultado_parcial) == 5:
+                total = timezone.datetime.strptime(resultado_parcial[4],'%H:%M') - timezone.datetime.strptime(resultado_parcial[1], '%H:%M') - (timezone.datetime.strptime(resultado_parcial[3], '%H:%M') - timezone.datetime.strptime(resultado_parcial[2], '%H:%M'))
+                resultado_parcial.append(str(total))
+            resultado.append(resultado_parcial)
+            
+            resultado = resultado[1:]
             for item in resultado:
                 if len(item) < 6:
                     while(len(item) < 6): item.append("-")
