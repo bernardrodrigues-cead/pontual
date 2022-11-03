@@ -15,7 +15,7 @@
 ## PATH's
 #
 SRC          := ./
-VENV_BIN_DIR := ~/Documents/programming/ponto/bin
+VENV_BIN_DIR := ~/.venvs/cead-pontual/bin
 ACTIVATE     := ${VENV_BIN_DIR}/activate
 PYTHON_BIN   := ${VENV_BIN_DIR}/python
 PIP_BIN      := ${VENV_BIN_DIR}/pip

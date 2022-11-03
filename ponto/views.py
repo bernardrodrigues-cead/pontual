@@ -101,7 +101,6 @@ def cadastrarFuncionario(request):
             return redirect('index')
     
     form = FuncionarioForm()
-    form.fields['pis'] = forms.CharField(max_length=12, min_length=12)
     context = {
         'form': form,
     }
